@@ -3740,7 +3740,7 @@
     ]
   },
   {
-    "SubRoute": "南環幹線",
+    "SubRoute": "南環幹線調度站發車",
     "Direction": 0,
     "Geometry": [
       [
@@ -5470,7 +5470,7 @@
     ]
   },
   {
-    "SubRoute": "南環幹線",
+    "SubRoute": "南環幹線調度站發車",
     "Direction": 1,
     "Geometry": [
       [
@@ -7480,7 +7480,7 @@
     ]
   },
   {
-    "SubRoute": "南環幹線",
+    "SubRoute": "南環幹線捷運新店站發車",
     "Direction": 0,
     "Geometry": [
       [
@@ -8494,7 +8494,7 @@
     ]
   },
   {
-    "SubRoute": "南環幹線",
+    "SubRoute": "南環幹線捷運新店站發車",
     "Direction": 1,
     "Geometry": [
       [
