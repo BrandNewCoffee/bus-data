@@ -1,7 +1,7 @@
 const map = L.map('map').setView([25.05,121.53],12);
 
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 20,
+    maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
@@ -12,6 +12,7 @@ let currentLine=null;
 //start=null;
 let currentStops=L.layerGroup().addTo(map);
 const dataCache=[];
+let currentMenu="routeMenu"
 
 async function getRouteList(){
     const res=await fetch("https://BrandNewCoffee.github.io/busmap-yesyes/data/routelist_sorted.json");
@@ -58,12 +59,8 @@ function search(){
     routeList.forEach(route=>{
         if(route.includes(content)){showMenu(route,"searchRouteList")}
     })
-    const menu=document.getElementById("routeMenu");
-    const subMenu=document.getElementById("subRouteMenu");
-    const srchMenu=document.getElementById("searchRouteMenu");
-    menu.style.display="none";
-    subMenu.style.display="none";
-    srchMenu.style.display="flex";
+    switchMenu("searchRouteMenu");
+    currentMenu="searchRouteMenu";
 }
 
 function showMenu(r,menu){
@@ -91,22 +88,25 @@ async function showSubMenu(r){
         }
         subList.appendChild(subRow);
     }
-    const menu=document.getElementById("routeMenu");
-    const subMenu=document.getElementById("subRouteMenu");
-    const srchMenu=document.getElementById("searchRouteMenu");
-    menu.style.display="none";
-    subMenu.style.display="flex";
-    srchMenu.style.display="none";
+    switchMenu("subRouteMenu")
 }
 
-function backToMenu(){
-    const menu=document.getElementById("routeMenu");
-    const subMenu=document.getElementById("subRouteMenu");
-    const srchMenu=document.getElementById("searchRouteMenu");
-    menu.style.display="flex";
-    subMenu.style.display="none";
-    srchMenu.style.display="none";
+function switchMenu(showId){
+    const menus=["routeMenu","subRouteMenu","searchRouteMenu"]
+    menus.forEach(id=>{
+        let menu=document.getElementById(id);
+        if(id===showId){menu.style.display="flex";}
+        else{menu.style.display="none";}
+    })
 }
+
+function prePage_srch(){
+    switchMenu("routeMenu");
+    currentMenu="routeMenu";
+}
+
+document.getElementById("prePageBtn_srch").addEventListener("click",()=>prePage_srch());
+document.getElementById("prePageBtn_sub").addEventListener("click",()=>switchMenu(currentMenu));
 
 function showRoute(r,s,d){
     stops(r,s,d);shape(r,s,d);

@@ -41,7 +41,7 @@ for i in range(len(routeList)//5+1):
                 })
 
             map_data.append(route_info)
-        with open(f"../yesyes/data/stops/stops_{route}.json", "w", encoding="utf-8") as f:
+        with open(f"../yesyes/data/stops/stops_{route}.json", mode="w", encoding="utf-8") as f:
             json.dump(map_data, f, ensure_ascii=False, indent=2)
     if 5*(i+1)>=len(routeList):
         break

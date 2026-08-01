@@ -20,6 +20,16 @@ html, body {
     justify-content:center;
 }
 
+#tdxCC{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    z-index:1000;
+    /* height:20px; */
+    background-color:white;
+    border:1px solid black;
+    font-size:12px;
+}
 
 #mainSection{
     height:100%;
@@ -37,6 +47,7 @@ html, body {
     color:white;
     font-size:25px;
 }
+
 #search{
     position: absolute;
     top: 20px;
@@ -97,7 +108,8 @@ html, body {
         .subRouteRow{
             display:flex;
         }
-    .previousPageBtn{
+    #prePageBtn_sub,
+    #prePageBtn_srch{
         position:absolute;
         width:25px;
         height:25px;
